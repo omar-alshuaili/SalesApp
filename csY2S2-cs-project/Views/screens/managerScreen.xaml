@@ -1,0 +1,82 @@
+﻿<Window x:Class="csY2S2_cs_project.Views.managerScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:csY2S2_cs_project.Views"
+        xmlns:mangerScreenViews="clr-namespace:csY2S2_cs_project.Views.mangerScreenViews"
+        mc:Ignorable="d"
+        Title="managerScreen" Height="550" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#ffffff">
+    <Window.Resources>
+        <Style x:Key="panelButton" TargetType="{x:Type Button}" >
+            <Setter Property="OverridesDefaultStyle" Value="False"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Margin" Value="0 0 0 35"/>
+            <Setter Property="MaxHeight" Value="50"/>
+         
+        </Style>
+        
+        <Style x:Key="panelIcons" TargetType="materialDesign:PackIcon" >
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
+
+        </Style>
+
+        <DataTemplate x:Key="SalesTemp" DataType="{x:Type mangerScreenViews:salesUserControl}"></DataTemplate>
+    </Window.Resources>
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            
+            
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Column="0" >
+
+            <StackPanel Orientation="Vertical" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+
+                <Border   BorderThickness="4" CornerRadius="30" Width="60" Height="60" Margin="0 0 0 35" Background="Transparent">
+                    <Image  Source="{Binding Path= image}"   Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+
+
+                </Border>
+                <Button x:Name="panelButton" Style="{StaticResource panelButton}" Click="SalesBtn_Clicked" >
+                    <materialDesign:PackIcon Kind="ChartTimelineVariant" Style="{StaticResource panelIcons}" />
+                </Button>
+
+
+
+                <Button Style="{StaticResource panelButton}" >
+
+                    <materialDesign:PackIcon Kind="CustomerService" Style="{StaticResource panelIcons}"/>
+                </Button>
+
+                <Button Style="{StaticResource panelButton}">
+                    <materialDesign:PackIcon Kind="Users" Style="{StaticResource panelIcons}" />
+                </Button>
+
+                <Button Style="{StaticResource panelButton}" >
+                    <materialDesign:PackIcon Kind="Warehouse" Style="{StaticResource panelIcons}" />
+                </Button>
+
+                <Button Style="{StaticResource panelButton}"   Margin="0 65 0 0">
+                    <materialDesign:PackIcon Kind="Logout" Style="{StaticResource panelIcons}"  />
+                </Button>
+
+            </StackPanel>
+
+        </DockPanel>
+        <ContentControl Grid.Column="1" Grid.ColumnSpan="3" Content="{Binding}" >
+            
+        </ContentControl>
+        
+    </Grid>
+</Window>

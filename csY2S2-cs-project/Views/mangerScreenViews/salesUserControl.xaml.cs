@@ -1,7 +1,4 @@
-﻿using csY2S2_cs_project.Data;
-using csY2S2_cs_project.Views;
-using csY2S2_cs_project.Views.startWindows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,25 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace csY2S2_cs_project
+namespace csY2S2_cs_project.Views.mangerScreenViews
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for salesUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class salesUserControl : UserControl
     {
-        public MainWindow()
+        public salesUserControl()
         {
             InitializeComponent();
         }
-
-
-        private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
-        {
-            frame.NavigationService.Navigate(new startWindow1());
-
-            
-        }
-        
     }
 }

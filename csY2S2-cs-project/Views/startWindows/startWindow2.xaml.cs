@@ -1,7 +1,4 @@
-﻿using csY2S2_cs_project.Data;
-using csY2S2_cs_project.Views;
-using csY2S2_cs_project.Views.startWindows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,25 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace csY2S2_cs_project
+namespace csY2S2_cs_project.Views.startWindows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for startWindow2.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class startWindow2 : Page
     {
-        public MainWindow()
+        public startWindow2()
         {
             InitializeComponent();
         }
-
-
-        private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
+        private void Next_button_clicked(object sender, RoutedEventArgs e)
         {
-            frame.NavigationService.Navigate(new startWindow1());
+            this.NavigationService.Navigate(new startWindow3());
 
-            
         }
-        
+
+        private void Previous_button_clicked(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new startWindow1());
+
+        }
     }
 }
