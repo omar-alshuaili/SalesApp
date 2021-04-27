@@ -8,14 +8,14 @@ namespace csY2S2_cs_project.classes
 {
     public class managerClass: UserClass
     {
-        
-        public override bool isAllowed()
+
+
+
+
+        public string DisInformation()
         {
-            return true;
-        }
-        public override string DisInformation()
-        {
-            return "";    
+           
+            return $"Hello, {this.Name.Split(' ')[0] }";
         }
     }
 }

@@ -25,7 +25,9 @@ namespace csY2S2_cs_project.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<users> users { get; set; }
         public virtual DbSet<role> roles { get; set; }
+        public virtual DbSet<orders> orders { get; set; }
+        public virtual DbSet<customers> customers { get; set; }
     }
 }

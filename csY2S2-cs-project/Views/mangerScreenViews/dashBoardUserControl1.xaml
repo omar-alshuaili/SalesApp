@@ -1,0 +1,369 @@
+﻿<UserControl x:Class="csY2S2_cs_project.Views.mangerScreenViews.dashBoardUserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:csY2S2_cs_project.Views.mangerScreenViews"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+             mc:Ignorable="d" 
+             d:DesignHeight="470" d:DesignWidth="770"  Height="710" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#f6f9fd" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Style x:Key="StackOfBtns" TargetType="{x:Type StackPanel}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="18 20 0 0"/>
+
+        </Style>
+        
+        <Style x:Key="cardsStackPanle" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+        </Style>
+
+        
+        
+
+        
+
+
+
+
+    
+
+       
+
+        <Style x:Key="bestStaffCard" TargetType="Border">
+            <Setter Property="Background" Value="#fefffe"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="30"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="800"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Gray" Opacity="0.1" BlurRadius="100"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+        <Style x:Key="cardIcoonsOtuside" TargetType="Border">
+            <Setter Property="Background" Value="#00e685"/>
+            <Setter Property="Width" Value="55"/>
+            <Setter Property="Height" Value="55"/>
+            <Setter Property="CornerRadius" Value="9"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 -400 0 0" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#00e685" Opacity="0.2" BlurRadius="30"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="cardIconInside" TargetType="materialDesign:PackIcon">
+            <Setter  Property="HorizontalAlignment" Value="Center"/>
+            <Setter  Property="Width" Value="30"/>
+            <Setter  Property="Height" Value="30"/>
+            <Setter  Property="VerticalAlignment" Value="Center"/>
+            <Setter  Property="Foreground" Value="White"/>
+        </Style>
+
+        <DataTemplate x:Key="lbxProductsTemp">
+
+            <Grid    HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin=" 10"   >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Path=Name}" FontSize="16" HorizontalAlignment="Left"   Grid.Column="0"   />
+                <TextBlock Text="{Binding Path=Type}" FontSize="16" HorizontalAlignment="Right" TextAlignment="Left" VerticalAlignment="Center" Grid.Column="1" />
+            </Grid>
+
+        </DataTemplate>
+
+
+        <Style x:Key="lbxProductsStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="#f6f9fd"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="12" />
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+
+                </Style>
+            </Style.Resources>
+
+        </Style>
+
+
+        <Style x:Key="cardTextBig" TargetType="TextBlock">
+            <Setter  Property="HorizontalAlignment" Value="Center"/>
+            <Setter  Property="FontSize" Value="50"/>
+            <Setter  Property="VerticalAlignment" Value="Center"/>
+            <Setter  Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="cardTextSmall" TargetType="TextBlock">
+            <Setter  Property="HorizontalAlignment" Value="Center"/>
+            <Setter  Property="FontSize" Value="14"/>
+            <Setter  Property="VerticalAlignment" Value="Center"/>
+            <Setter  Property="FontWeight" Value="Light"/>
+            <Setter Property="Foreground" Value="Gray"/>
+        </Style>
+
+        
+
+        <Style x:Key="staffNames" TargetType="TextBlock">
+            <Setter  Property="HorizontalAlignment" Value="Center"/>
+            <Setter  Property="FontSize" Value="14"/>
+            <Setter  Property="VerticalAlignment" Value="Center"/>
+            <Setter  Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+        </Style>
+
+       
+
+       
+
+    </UserControl.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+
+
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition Height=".3*"/>
+        </Grid.RowDefinitions>
+
+
+
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Style="{StaticResource cardsStackPanle}" >
+
+
+            <Border Style="{StaticResource cards}" >
+
+                <Grid>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <TextBlock Text="$100" x:Name="NewSalesText" Style="{StaticResource cardTextBig}" />
+                        <TextBlock Text="new sales" Style="{StaticResource cardTextSmall}"  />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource cardIcoonsOtuside}" >
+                <materialDesign:PackIcon Kind="Money"  Style="{StaticResource cardIconInside}" Width="40" Height="40" />
+
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource cardsStackPanle}" >
+
+
+            <Border Style="{StaticResource cards}" >
+
+                <Grid>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <TextBlock Text="9900"  Style="{StaticResource cardTextBig}" />
+                        <TextBlock Text="total customers" Style="{StaticResource cardTextSmall}"  />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource cardIcoonsOtuside}" >
+                <materialDesign:PackIcon Kind="AccountGroup" Style="{StaticResource cardIconInside}" />
+
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource cardsStackPanle}" >
+
+
+            <Border Style="{StaticResource cards}" >
+
+                <Grid>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <TextBlock Text="1300"  Style="{StaticResource cardTextBig}" />
+                        <TextBlock Text="orders" Style="{StaticResource cardTextSmall}"  />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource cardIcoonsOtuside}" >
+                <materialDesign:PackIcon Kind="Purse" Style="{StaticResource cardIconInside}" />
+
+            </Border>
+        </StackPanel>
+
+        <!-- end of row 1-->
+        <!-- start of row 2 -->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" >
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  VerticalAlignment="Stretch" >
+                <TextBlock Text="type to search" VerticalAlignment="Center" Margin="5 0 0 10" FontSize="16" FontWeight="Light" Foreground="Gray"/>
+                <StackPanel Orientation="Horizontal">
+                    <Border Style="{StaticResource borderInputs}"  >
+
+                        <TextBox Style="{StaticResource inputs}" x:Name="searchInput" TextChanged="searchInput_TextChanged" />
+                    </Border>
+
+                </StackPanel>
+            </StackPanel>
+
+
+            <!--filters-->
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"   Margin="0 20 0 0 "  >
+                <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="only show"  Margin="18 0 0 0" FontSize="16" FontWeight="Light" Foreground="Gray"/>
+                    <TextBlock Text="rest" VerticalAlignment="Center" Margin="120 0 0 0" FontSize="16" FontWeight="Bold" Foreground="Gray" Focusable="True"  PreviewMouseDown="Rest_PreviewMouseDown"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource StackOfBtns }" >
+                        <Grid >
+
+
+                            <Button  x:Name="fruitsbtn" Click="fruitsbtn_Click"  Style="{StaticResource panelButton }"  VerticalAlignment="Center"  Content="fruits" >
+                            </Button>
+
+                        </Grid>
+                    </StackPanel>
+                    
+
+                    <StackPanel Style="{StaticResource StackOfBtns }" >
+                        <Grid >
+
+
+                            <Button  x:Name="bakerybtn" Click="bakerybtn_Click"  Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="bakery" >
+                            </Button>
+
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource StackOfBtns }" >
+                        <Grid >
+
+
+                            <Button x:Name="meatbtn" Click="meatbtn_Click"   Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="meat" >
+                            </Button>
+
+                        </Grid>
+
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource StackOfBtns }" >
+                        <Grid >
+
+
+                            <Button x:Name="vegbtn" Click="vegbtn_Click"   Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="vegetable" >
+                            </Button>
+
+                        </Grid>
+
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Style="{StaticResource StackOfBtns }" >
+                        <Grid >
+
+
+                            <Button  x:Name="dairybtn" Click="dairybtn_Click"     Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="dairy" >
+                            </Button>
+
+                        </Grid>
+
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource StackOfBtns }" >
+                        <Grid >
+
+
+                            <Button x:Name="oilbtn" Click="oilbtn_Click"   Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="oil" >
+                            </Button>
+
+                        </Grid>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+
+        <Border Style="{StaticResource cards}" Grid.Row="1" Grid.Column="2" Width="300"  Height="300" VerticalAlignment="Top" HorizontalAlignment="Left" >
+
+            <Grid>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 10 0 0" >
+                    <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Vertical" Margin="20 0 0 10">
+                            <TextBlock Text="product name"  Style="{StaticResource cardTextBig}" FontSize="20" HorizontalAlignment="Left"   Foreground="#00e685" />
+                            <TextBlock Text="" x:Name="productNameInfoPanel"  Style="{StaticResource cardTextSmall}" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Left"  />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="20 0 0 10">
+                            <TextBlock Text="product Id"  Style="{StaticResource cardTextBig}" FontSize="20" HorizontalAlignment="Left"   Foreground="#00e685" />
+                            <TextBlock Text="" x:Name="productIdInfoPanel"  Style="{StaticResource cardTextSmall}" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Left"  />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="20 0 0 10">
+                            <TextBlock Text="product description"  Style="{StaticResource cardTextBig}" FontSize="20" HorizontalAlignment="Left"  Foreground="#00e685"  />
+                            <TextBlock x:Name="productdescriptionInfoPanel"  Style="{StaticResource cardTextSmall}" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Left"  MaxWidth="260" TextWrapping="Wrap"  />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Margin="20 0 0 10">
+                            <TextBlock Text="price"  Style="{StaticResource cardTextBig}" FontSize="20" HorizontalAlignment="Left" Foreground="#00e685"  />
+                            <TextBlock x:Name="productPriceInfoPanel"  Style="{StaticResource cardTextSmall}" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Left"  />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Style="{StaticResource cards}" Grid.Row="1" Grid.Column="1" Width="300"  Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <ListBox Style="{StaticResource lbxProductsStyle}" Margin="20 0 0 0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" x:Name="ProductListBox" MinWidth="250" MinHeight="250"  MaxHeight="250" ItemTemplate="{StaticResource lbxProductsTemp }" SelectionChanged="ProductListBox_SelectionChanged"/>
+            </ScrollViewer>
+        </Border>
+
+
+ 
+
+
+
+
+
+
+
+        <!-- end of row 2-->
+        <!-- start of row 3 -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+
+            <Border Style="{StaticResource bestStaffCard}" >
+
+                <Grid >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock x:Name="dateText"  Margin="10 0 50 0 " FontSize="16" Foreground="Gray" FontWeight="Bold"/>
+                        <TextBlock x:Name="timeText"  FontSize="16" Foreground="Gray" FontWeight="Bold"/>
+                    </StackPanel>
+                </Grid>
+
+
+
+
+            </Border>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

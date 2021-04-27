@@ -23,6 +23,13 @@ namespace csY2S2_cs_project.Views.startWindows
     /// </summary>
     public partial class LogIn : Page
     {
+
+        public static List<managerClass> Managerusers = new List<managerClass>();
+
+
+
+
+
         Model1Container db = new Model1Container();
 
         public LogIn()
@@ -39,65 +46,57 @@ namespace csY2S2_cs_project.Views.startWindows
         {
 
 
-            managerScreen managerScreen = new managerScreen();
-            managerScreen.Show();
+
 
             MainWindow win = new MainWindow();
             win.Close();
 
+            //get the user fileds from the database 
+            var UserQuery = from u in db.users
+                            where u.userName == userNameInput.Text
+                            select u;
 
-            var query = from t in db.users
-                        select t.name;
-
-            var result = query.ToList().First();
-
-            text.Text = result.ToString();
-
-            //var q = from u in db.users
-            //        where u.password == passwordInput.Text.ToString()
-            //        select u;
-
-
-            //var results = q.ToList();
-
-            //foreach (var item in results)
-            //{
-
-            //    if (item.roleId.ToString() == "1")
-            //    {
-            //        CashierClass c = new CashierClass();
-            //        c.Name = item.name.ToString();
-            //        c.image = item.image;
-            //        CurrentUser u = new CurrentUser();
-            //        u.User(c);
-
-            //    }
-            //    else
-            //    {
-            //        managerClass m = new managerClass();
-            //        m.Name = item.name.ToString();
-            //        m.image = item.image;
-            //        CurrentUser u = new CurrentUser();
-            //        u.User(m);
-            //    }
-
-            //}
+            //get the userName password and check if it is correct
+            var PasswordQuery = from p in UserQuery
+                                where p.password == passwordInput.Text
+                                select new
+                                {
+                                    userName = p.userName,
+                                    password = p.password,
+                                    name = p.name,
+                                    image = p.image,
+                                    role = p.roleId
+                                };
 
 
-
-
-
-
-
-        }
-        public class CurrentUser
-        {
-            public string User(UserClass user)
+            //check if passwordInput is null
+            try
             {
-                return user.Name;
+
+                var currenUser = PasswordQuery.ToList().First();
+
+                if (currenUser.role == 1)
+                {
+
+                    Managerusers.Add(new managerClass { Name = currenUser.name.ToString(), Password = currenUser.password.ToString(), RoleName = "manager", image = currenUser.image.ToString() });
+                    
+
+                    managerScreen managerScreen = new managerScreen();
+                    managerScreen.Show();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                message.Text = "Please enter valid password";
             }
 
+
         }
+
+
+
     }
 
 }

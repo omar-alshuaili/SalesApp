@@ -7,76 +7,167 @@
         xmlns:local="clr-namespace:csY2S2_cs_project.Views"
         xmlns:mangerScreenViews="clr-namespace:csY2S2_cs_project.Views.mangerScreenViews"
         mc:Ignorable="d"
-        Title="managerScreen" Height="550" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#ffffff">
+        Title="managerScreen" Height="800" Width="1300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#f6f9fd" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="panelButton" TargetType="{x:Type Button}" >
             <Setter Property="OverridesDefaultStyle" Value="False"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Margin" Value="0 0 0 35"/>
-            <Setter Property="MaxHeight" Value="50"/>
-         
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#e1ebf8"/>
+                    
+                </Trigger>
+
+            </Style.Triggers>
+
+            
+
         </Style>
         
-        <Style x:Key="panelIcons" TargetType="materialDesign:PackIcon" >
-            <Setter Property="Width" Value="30"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
+        <Style x:Key="StackOfIcon" TargetType="{x:Type StackPanel}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="18 20 0 0"/>
+            
+        </Style>
+        <Style x:Key="textPanel" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource rubic}"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Margin" Value="20 0 0 0" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+
+            <Setter Property="Margin" Value="60 0 0 0"/>
 
         </Style>
 
-        <DataTemplate x:Key="SalesTemp" DataType="{x:Type mangerScreenViews:salesUserControl}"></DataTemplate>
+
+        <Style x:Key="panelIcons" TargetType="materialDesign:PackIcon" >
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height"  Value="25"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
+            <Setter Property="Foreground" Value="#2f77fe"/>
+        </Style>
+
     </Window.Resources>
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".2*"/>
+            <ColumnDefinition Width=".5*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            
-            
+            <RowDefinition Height=".4*"/>
+            <RowDefinition/>
+
         </Grid.RowDefinitions>
-        <DockPanel Grid.Column="0" >
+        <Border Grid.Row="0"     CornerRadius="50" Margin="0 50 0 0" Width="100" Height="100" VerticalAlignment="Top"  RenderOptions.BitmapScalingMode="Fant">
+            <Border.Background>
+                <ImageBrush Stretch="UniformToFill"  ImageSource="{Binding maagerImage}"/>
+            </Border.Background>
 
-            <StackPanel Orientation="Vertical" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+        </Border>
+        <Border Name="Mask" Background="White" CornerRadius="7"/>
 
-                <Border   BorderThickness="4" CornerRadius="30" Width="60" Height="60" Margin="0 0 0 35" Background="Transparent">
-                    <Image  Source="{Binding Path= image}"   Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+        <StackPanel Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel.OpacityMask>
+                <VisualBrush Visual="{Binding ElementName=Mask}"/>
+            </StackPanel.OpacityMask>
+
+            <Image Name="imgPlayer"                           
+               Source="{Binding maagerImage}" 
+             
+               />
+        </StackPanel>
 
 
-                </Border>
-                <Button x:Name="panelButton" Style="{StaticResource panelButton}" Click="SalesBtn_Clicked" >
-                    <materialDesign:PackIcon Kind="ChartTimelineVariant" Style="{StaticResource panelIcons}" />
-                </Button>
+        <TextBlock  Text="Hello, Omar"   FontSize="16" Grid.Row="0" Grid.Column="0" x:Name="info"  FontWeight="SemiBold" TextAlignment="Center" Margin="0 0 0 30" VerticalAlignment="Bottom"  ></TextBlock>
+
+        <DockPanel Grid.Column="0" Grid.Row="1" >
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch"  >
 
 
 
-                <Button Style="{StaticResource panelButton}" >
 
-                    <materialDesign:PackIcon Kind="CustomerService" Style="{StaticResource panelIcons}"/>
-                </Button>
+                <StackPanel Style="{StaticResource StackOfIcon }" >
+                    <Grid >
 
-                <Button Style="{StaticResource panelButton}">
-                    <materialDesign:PackIcon Kind="Users" Style="{StaticResource panelIcons}" />
-                </Button>
+                       
+                        <Button   Style="{StaticResource panelButton}" Click="dashboard_Click" VerticalAlignment="Center"  >
+                          
+                            <Grid>
+                                <materialDesign:PackIcon Style="{StaticResource panelIcons}" Kind="ChartTimelineVariant"></materialDesign:PackIcon>
+                                <TextBlock Style="{StaticResource textPanel}"   Text="dashborad"  ></TextBlock>
+                            </Grid>
+                        </Button>
+                        
+                    </Grid>
+                </StackPanel>
 
-                <Button Style="{StaticResource panelButton}" >
-                    <materialDesign:PackIcon Kind="Warehouse" Style="{StaticResource panelIcons}" />
-                </Button>
+                
+                <StackPanel Style="{StaticResource StackOfIcon }" >
+                    <Grid>
 
-                <Button Style="{StaticResource panelButton}"   Margin="0 65 0 0">
-                    <materialDesign:PackIcon Kind="Logout" Style="{StaticResource panelIcons}"  />
-                </Button>
+
+                        <Button  x:Name="manageTab"  Style="{StaticResource panelButton}" Click="manageBtn_Clicked" VerticalAlignment="Stretch"  >
+                            <Grid>
+                                <materialDesign:PackIcon Kind="TuneVertical"  Style="{StaticResource panelIcons}"  ></materialDesign:PackIcon>
+                                <TextBlock Style="{StaticResource textPanel}"   Text="manage"  ></TextBlock>
+                            </Grid>
+                        </Button>
+
+                    </Grid>
+                </StackPanel>
+                
+                <StackPanel Style="{StaticResource StackOfIcon }" >
+                    <Grid>
+
+
+                        <Button   Style="{StaticResource panelButton}" Click="SalesBtn_Clicked" VerticalAlignment="Stretch" >
+                            <Grid>
+                                <materialDesign:PackIcon Kind="LibraryShelves" Style="{StaticResource panelIcons}" ></materialDesign:PackIcon>
+                                <TextBlock Style="{StaticResource textPanel}"   Text="products"  ></TextBlock>
+                            </Grid>
+                        </Button>
+                        
+
+                    </Grid>
+                </StackPanel>
+
+
+
+                <StackPanel Style="{StaticResource StackOfIcon }" >
+                    <Grid>
+                        <Button x:Name="logoutBtn" Style="{StaticResource panelButton}" VerticalAlignment="Stretch" Click="logoutBtn_Click"   >
+                            <materialDesign:PackIcon Kind="LogoutVariant" Style="{StaticResource panelIcons}"    />
+                           
+
+                        </Button>
+                        <TextBlock Style="{StaticResource textPanel}"   Text="log out"  ></TextBlock>
+                    </Grid>
+
+                    
+                </StackPanel>
+
+
 
             </StackPanel>
 
         </DockPanel>
-        <ContentControl Grid.Column="1" Grid.ColumnSpan="3" Content="{Binding}" >
-            
+        <ContentControl Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" Content="{Binding}" >
+
         </ContentControl>
-        
+
     </Grid>
 </Window>

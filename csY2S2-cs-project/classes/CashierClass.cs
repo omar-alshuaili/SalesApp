@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 
 namespace csY2S2_cs_project.classes
 {
+
     public class CashierClass : UserClass
     {
-        public override bool isAllowed()
+        public CashierClass(string name, string roleName,string image,string password)
         {
-            return false;
-        }
+            this.Name = name;
+            this.RoleName = roleName;
+            this.image = image;
+            this.Password = password;
 
-        public override string DisInformation()
-        {
-            return "";        
+            
+
         }
+      
+
+
     }
 }

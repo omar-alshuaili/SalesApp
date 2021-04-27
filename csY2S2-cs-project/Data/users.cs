@@ -12,18 +12,15 @@ namespace csY2S2_cs_project.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class role
+    public partial class users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public role()
-        {
-            this.users = new HashSet<users>();
-        }
-    
         public int Id { get; set; }
-        public string roleName { get; set; }
+        public string name { get; set; }
+        public string image { get; set; }
+        public string password { get; set; }
+        public string userName { get; set; }
+        public int roleId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<users> users { get; set; }
+        public virtual role role { get; set; }
     }
 }

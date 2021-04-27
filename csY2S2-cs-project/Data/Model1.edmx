@@ -8,9 +8,15 @@
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="users" EntityType="Model1.Store.users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="roles" EntityType="Model1.Store.roles" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="userrole" Association="Model1.Store.userrole">
-      <End Role="user" EntitySet="users" />
+    <EntitySet Name="orders" EntityType="Model1.Store.orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="customers" EntityType="Model1.Store.customers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="usersrole" Association="Model1.Store.usersrole">
+      <End Role="users" EntitySet="users" />
       <End Role="role" EntitySet="roles" />
+    </AssociationSet>
+    <AssociationSet Name="customersorders" Association="Model1.Store.customersorders">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="orders" EntitySet="orders" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="users">
@@ -19,26 +25,56 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="roleId" Type="int" Nullable="false" />
     <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="roleId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="roles">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="totalPrice" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="customersId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <Association Name="userrole">
-    <End Role="user" Type="Model1.Store.users" Multiplicity="*" />
+  <Association Name="usersrole">
+    <End Role="users" Type="Model1.Store.users" Multiplicity="*" />
     <End Role="role" Type="Model1.Store.roles" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="role">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="user">
+      <Dependent Role="users">
         <PropertyRef Name="roleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="customersorders">
+    <End Role="customers" Type="Model1.Store.customers" Multiplicity="1" />
+    <End Role="orders" Type="Model1.Store.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="customersId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -47,41 +83,79 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="users" EntityType="Model1.user" />
+          <EntitySet Name="users" EntityType="Model1.users" />
           <EntitySet Name="roles" EntityType="Model1.role" />
-          <AssociationSet Name="userrole" Association="Model1.userrole">
-            <End Role="user" EntitySet="users" />
+          <AssociationSet Name="usersrole" Association="Model1.usersrole">
+            <End Role="users" EntitySet="users" />
             <End Role="role" EntitySet="roles" />
           </AssociationSet>
+          <EntitySet Name="orders" EntityType="Model1.orders" />
+          <EntitySet Name="customers" EntityType="Model1.customers" />
+          <AssociationSet Name="customersorders" Association="Model1.customersorders">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="user">
+        <EntityType Name="users">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" />
-          <Property Name="password" Type="String" Nullable="false" />
-          <NavigationProperty Name="role" Relationship="Model1.userrole" FromRole="user" ToRole="role" />
-          <Property Name="roleId" Type="Int32" Nullable="false" />
           <Property Name="image" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <Property Name="userName" Type="String" Nullable="false" />
+          <NavigationProperty Name="role" Relationship="Model1.usersrole" FromRole="users" ToRole="role" />
+          <Property Name="roleId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" />
-          <NavigationProperty Name="users" Relationship="Model1.userrole" FromRole="role" ToRole="user" />
+          <Property Name="roleName" Type="String" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Model1.usersrole" FromRole="role" ToRole="users" />
         </EntityType>
-        <Association Name="userrole">
-          <End Type="Model1.user" Role="user" Multiplicity="*" />
+        <Association Name="usersrole">
+          <End Type="Model1.users" Role="users" Multiplicity="*" />
           <End Type="Model1.role" Role="role" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="role">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="user">
+            <Dependent Role="users">
               <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productName" Type="String" Nullable="false" />
+          <Property Name="ProductId" Type="String" Nullable="false" />
+          <Property Name="totalPrice" Type="String" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Model1.customersorders" FromRole="orders" ToRole="customers" />
+          <Property Name="customersId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Model1.customersorders" FromRole="customers" ToRole="orders" />
+        </EntityType>
+        <Association Name="customersorders">
+          <End Type="Model1.customers" Role="customers" Multiplicity="1" />
+          <End Type="Model1.orders" Role="orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="customersId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -92,19 +166,39 @@
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
     <EntitySetMapping Name="users">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.user)">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.users)">
         <MappingFragment StoreEntitySet="users">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="roleId" ColumnName="roleId" />
           <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="roles">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.role)">
         <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.orders)">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="customersId" ColumnName="customersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.customers)">
+        <MappingFragment StoreEntitySet="customers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>

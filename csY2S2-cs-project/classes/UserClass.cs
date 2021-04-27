@@ -11,8 +11,8 @@ namespace csY2S2_cs_project.classes
         public string Password { set; get; }
         public string Name { set; get; }
         public string image { set; get; }
-        public abstract string DisInformation();
-        public abstract Boolean isAllowed();
+        public string RoleName { get; set; }
+       
 
     }
 }

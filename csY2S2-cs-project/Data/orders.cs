@@ -12,18 +12,14 @@ namespace csY2S2_cs_project.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class role
+    public partial class orders
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public role()
-        {
-            this.users = new HashSet<users>();
-        }
-    
         public int Id { get; set; }
-        public string roleName { get; set; }
+        public string productName { get; set; }
+        public string ProductId { get; set; }
+        public string totalPrice { get; set; }
+        public int customersId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<users> users { get; set; }
+        public virtual customers customer { get; set; }
     }
 }

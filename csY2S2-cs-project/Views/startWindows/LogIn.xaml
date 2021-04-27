@@ -48,6 +48,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height=".5*"/>
             <RowDefinition  Height=".5*"/>
+            <RowDefinition  Height=".5*"/>
             <RowDefinition  Height="*"/>
         </Grid.RowDefinitions>
 
@@ -58,8 +59,14 @@
         
 
         <!--row 1-->
-        <materialDesign:PackIcon Kind="Password" Background="Transparent" BorderBrush="{x:Null}" Foreground="BlueViolet" Height="100" Width="50" Margin="50 0 0 0 "  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="0"></materialDesign:PackIcon>
+        <materialDesign:PackIcon Kind="User" Background="Transparent" BorderBrush="{x:Null}" Foreground="BlueViolet" Height="100" Width="50" Margin="50 0 0 0 "  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="0"></materialDesign:PackIcon>
         <Border BorderBrush="BlueViolet" BorderThickness="1" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"  MinHeight="55" CornerRadius="27.5" MinWidth="250">
+
+            <TextBox    Style="{StaticResource inputs}" x:Name="userNameInput"></TextBox>
+        </Border>
+        <materialDesign:PackIcon Kind="Password" Background="Transparent" BorderBrush="{x:Null}" Foreground="BlueViolet" Height="100" Width="50" Margin="50 0 0 0 "  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="0"></materialDesign:PackIcon>
+
+        <Border BorderBrush="BlueViolet" BorderThickness="1" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"  MinHeight="55" CornerRadius="27.5" MinWidth="250">
 
             <TextBox    Style="{StaticResource inputs}" x:Name="passwordInput"></TextBox>
         </Border>
@@ -68,7 +75,7 @@
         <TextBlock  x:Name="xx"/>
         <Button Click="Button_Click"  Content="Log in"  Height="50"  Width="134" Style="{StaticResource SubmitButton}" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="Fant"></Button>
 
-        <TextBlock x:Name="text" Width="130" Height="200" Background="Red"></TextBlock>
+        <TextBlock  Grid.Row="3" x:Name="message" Width="330" Height="30" FontSize="20" TextAlignment="Center" VerticalAlignment="Top"  Foreground="Red"></TextBlock>
         
 
     </Grid>
