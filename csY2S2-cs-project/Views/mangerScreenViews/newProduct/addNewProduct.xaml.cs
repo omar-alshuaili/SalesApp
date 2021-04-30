@@ -39,8 +39,19 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
                 {
                     var LastID = db.Product.OrderByDescending(i => i.Id)
                          .FirstOrDefault();
-                    var result = LastID.Id;
-                    var newID = result + 1;
+                    var result=0;
+                    var newID = 0;
+                    if (LastID == null)
+                    {
+                        result = LastID.Id+1;
+                    }
+                    else
+                    {
+                        result = LastID.Id;
+                        newID = result + 1;
+                    }
+                    
+                   
 
                     var uId = GenerateID();
                     string Imagename =  Regex.Replace(NameInput.Text, @"\s+", "").ToLower() + uId.ToString() + ".jpg";

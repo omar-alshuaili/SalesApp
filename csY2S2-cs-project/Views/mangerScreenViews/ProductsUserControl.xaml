@@ -103,7 +103,7 @@
 
                     <Border Style="{StaticResource borderInputs}"   >
 
-                        <TextBox Focusable="False" Style="{StaticResource InputsFields}" x:Name="nameInput" TextChanged="nameInput_TextChanged"    />
+                        <TextBox  Style="{StaticResource InputsFields}" x:Name="nameInput" TextChanged="nameInput_TextChanged"    />
                     </Border>
 
 
@@ -115,7 +115,7 @@
 
                     <Border Style="{StaticResource borderInputs}" >
 
-                        <TextBox  Focusable="False" Style="{StaticResource InputsFields}" x:Name="typeInput"    />
+                        <TextBox   Style="{StaticResource InputsFields}" x:Name="typeInput"    />
                     </Border>
 
 
@@ -128,7 +128,7 @@
 
                     <Border Style="{StaticResource borderInputs}" >
 
-                        <TextBox Focusable="False" Style="{StaticResource InputsFields}" x:Name="priceInput"    />
+                        <TextBox  Style="{StaticResource InputsFields}" x:Name="priceInput"    />
                     </Border>
 
 

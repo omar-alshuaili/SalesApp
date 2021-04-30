@@ -67,16 +67,13 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
             addNewProduct addNew = new addNewProduct();
             addNew.Show();
 
-
-
-
         }
 
         private void searchInput_TextChanged(object sender, TextChangedEventArgs e)
         {
             var searchQuery = from x in db.Product
-                              where x.Name.Contains(searchINput.Text) || x.UniqId.ToString().Contains(searchINput.Text)
-                              select x;
+                                               where x.Name.Contains(searchINput.Text) || x.UniqId.ToString().Contains(searchINput.Text)
+                                               select x;
 
             ProductsListBox.ItemsSource = searchQuery.ToList();
 
@@ -85,15 +82,26 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
         {
             Products selesctedProduct = ProductsListBox.SelectedItem as Products;
-            if (selesctedProducts != null)
+            if (selesctedProduct != null)
             {
                 using (db)
                 {
-                    var x = (from p in db.Product
-                             where p.UniqId == selesctedProduct.UniqId
-                             select p).FirstOrDefault();
-                    db.Product.Remove(x);
-                    db.SaveChanges();
+                    try
+                    {
+                       Products x = (from p in db.Product
+                                                  where p.UniqId == selesctedProduct.UniqId
+                                                  select p).FirstOrDefault();
+                        db.Product.Remove(x);
+                        db.SaveChanges();
+                        MessageBox.Show($"{x.Name} was deleted successfully");
+                        updateList();
+                    }
+                    catch
+                    {
+
+
+                    }
+
                 }
             }
 
@@ -111,18 +119,41 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
             {
                 using (db)
                 {
-                    var x = (from p in db.Product
-                             where p.UniqId == selesctedProduct.UniqId
-                             select p).FirstOrDefault();
+                    try
+                    {
+                        Products result = (from p in db.Product
+                                           where p.UniqId == selesctedProduct.UniqId
+                                           select p).SingleOrDefault();
+
+                        result.Name = nameInput.Text;
+                        result.Description = descriptionInput.Text;
+                        result.Price = decimal.Parse(priceInput.Text);
+                        result.Image = imageInput.Text;
+
+                        db.SaveChanges();
 
 
-                    x.Name = nameInput.Text;
-                    x.Description = descriptionInput.Text;
-                    x.Price = decimal.Parse(priceInput.Text);
 
-                    db.SaveChanges();
+                        MessageBox.Show($"{result.Name} was updated successfully");
+
+                        updateList();
+                    }
+                    catch
+                    {
+
+
+                    }
+
                 }
             }
+        }
+        public void updateList()
+        {
+            var q = from p in db.Product
+                    select p;
+
+
+            ProductsListBox.ItemsSource = q.ToList();
         }
     }
 }
