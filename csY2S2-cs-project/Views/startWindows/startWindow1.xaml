@@ -33,6 +33,7 @@
         <DockPanel  Grid.ColumnSpan="3" Grid.Row="0">
             <StackPanel Orientation="Vertical">
                 <Image Height="300" Source="/images/startWindow/Manage.png"  RenderOptions.BitmapScalingMode="Fant" ></Image>
+                <TextBlock Text="One platform with all the ecommerce and point of sale features you need to start, run, and grow your business." Width="450" Opacity="0.5" Margin="0 0 0 20" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Foreground="Gray" FontSize="18"></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Border CornerRadius="7" Background="Black"  BorderThickness="1"  BorderBrush="Black" Height="14" Width="14" Margin="0,0,10,0"  Name="navCircle1">
                         <Canvas  Background="Transparent"   />

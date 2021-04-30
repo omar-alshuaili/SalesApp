@@ -92,6 +92,9 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
         {
             if (nameInput.IsEnabled == false && passwordInput.IsEnabled == false && roleNameInput.IsEnabled == false)
             {
+                
+                waringMessage.Visibility = Visibility.Visible;
+                hide.Visibility = Visibility.Visible;
 
                 return false;
             }
@@ -106,17 +109,28 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
         //update the inptus text according to the selected item 
         private void usersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+
             //getting the selected item as an object of type CashierClass
             CashierClass selectedItem = usersListBox.SelectedItem as CashierClass;
+
+            Enabled(false);
+            nameInput.Text = string.Empty;
+            passwordInput.Text = string.Empty;
+            roleNameInput.Text = string.Empty;
+
 
             //to handel null object exception 
             if (selectedItem != null)
             {
+               
                 nameInput.Text = selectedItem.Name;
                 passwordInput.Text = selectedItem.Password;
                 roleNameInput.Text = selectedItem.RoleName;
 
             }
+           
+           
 
         }
 
@@ -141,7 +155,7 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
         //if yes and the user touch the inputs a warning message will be hidden and the user can and edit 
         private void nameInput_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (isEnabled())
+            if (!isEnabled())
             {
                 waringMessage.Visibility = Visibility.Visible;
                 hide.Visibility = Visibility.Visible;
@@ -225,7 +239,45 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
 
         private void validation()
         {
+            //getting the selected item as an object of type CashierClass
+            CashierClass selectedItem = usersListBox.SelectedItem as CashierClass;
+            if (selectedItem != null)
+            {
 
+
+
+                if (string.IsNullOrEmpty(nameInput.Text))
+                {
+                    Warning(nameInput.Name);
+                }
+                else
+                {
+                    selectedItem.Name = nameInput.Text;
+                }
+
+
+                if (string.IsNullOrEmpty(passwordInput.Text))
+                {
+                    Warning(passwordInput.Name);
+
+                }
+                else
+                {
+                    selectedItem.Password = passwordInput.Text;
+                }
+
+
+                if (roleNameInput.Text.ToLower() == "manager" || roleNameInput.Text.ToLower() == "cashier")
+                {
+                    selectedItem.RoleName = roleNameInput.Text.ToLower();
+
+                }
+                else
+                {
+                    Warning(roleNameInput.Name);
+
+                }
+            }
 
 
 
@@ -246,50 +298,10 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
             //if the inputs are not enabled (the edit button not pressed) a warning message will be displayed 
             if (isEnabled())
             {
-                waringMessage.Visibility = Visibility.Visible;
-                hide.Visibility = Visibility.Visible;
-
+               
                 waringMessage.Visibility = Visibility.Hidden;
                 hide.Visibility = Visibility.Hidden;
-
-
-                //getting the selected item as an object of type CashierClass
-                CashierClass selectedItem = usersListBox.SelectedItem as CashierClass;
-
-
-                if (string.IsNullOrEmpty(nameInput.Text))
-                {
-                    Warning(nameInput.Name);
-                }
-                else
-                {
-                    selectedItem.Name = nameInput.Text;
-                }
-
-                if (string.IsNullOrEmpty(passwordInput.Text))
-                {
-                    Warning(passwordInput.Name);
-
-                }
-                else
-                {
-                    selectedItem.Password = passwordInput.Text;
-                }
-
-
-
-                if (roleNameInput.Text.ToLower() == "manager" || roleNameInput.Text.ToLower() == "cashier")
-                {
-                    selectedItem.RoleName = roleNameInput.Text.ToLower();
-
-                }
-                else
-                {
-                    waringMessage.Text = "Role name can be either cashier or manager";
-                    waringMessage.Visibility = Visibility.Visible;
-                    hide.Visibility = Visibility.Visible;
-
-                }
+                validation();
                 updateList(cashiers);
 
             }

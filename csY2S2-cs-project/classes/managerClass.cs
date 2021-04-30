@@ -12,10 +12,10 @@ namespace csY2S2_cs_project.classes
 
 
 
-        public string DisInformation()
+        public  override string DisInformation()
         {
            
-            return $"Hello, {this.Name.Split(' ')[0] }";
+            return $"Hello, {this.Name.Split(' ')[0] }\n{this.RoleName}";
         }
     }
 }

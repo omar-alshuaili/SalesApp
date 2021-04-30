@@ -24,7 +24,7 @@ namespace csY2S2_cs_project.Views.startWindows
     public partial class LogIn : Page
     {
 
-        public static List<managerClass> Managerusers = new List<managerClass>();
+        public static managerClass currenUser = new managerClass();
 
 
 
@@ -64,7 +64,7 @@ namespace csY2S2_cs_project.Views.startWindows
                                     userName = p.userName,
                                     password = p.password,
                                     name = p.name,
-                                    image = p.image,
+                                    ImageURI = p.image,
                                     role = p.roleId
                                 };
 
@@ -73,16 +73,29 @@ namespace csY2S2_cs_project.Views.startWindows
             try
             {
 
-                var currenUser = PasswordQuery.ToList().First();
+                var Manager = PasswordQuery.ToList().First();
 
-                if (currenUser.role == 1)
+                if (Manager.role == 1)
                 {
 
-                    Managerusers.Add(new managerClass { Name = currenUser.name.ToString(), Password = currenUser.password.ToString(), RoleName = "manager", image = currenUser.image.ToString() });
-                    
 
-                    managerScreen managerScreen = new managerScreen();
-                    managerScreen.Show();
+
+                    currenUser.Name = Manager.name.ToString();
+                    currenUser.Password = Manager.password.ToString();
+                    currenUser.RoleName = "manager";
+                    currenUser.image = Manager.ImageURI;
+
+                    try
+                    {
+                        managerScreen managerScreen = new managerScreen();
+                        managerScreen.Show();
+                    }
+                    catch 
+                    {
+
+           
+                    }
+                   
                 }
 
             }

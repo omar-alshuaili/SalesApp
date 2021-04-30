@@ -17,11 +17,12 @@ namespace csY2S2_cs_project.classes
             this.image = image;
             this.Password = password;
 
-            
-
         }
-      
+        public override string DisInformation()
+        {
 
+            return $"Hello, {this.Name.Split(' ')[0] }\n{this.RoleName}";
+        }
 
     }
 }

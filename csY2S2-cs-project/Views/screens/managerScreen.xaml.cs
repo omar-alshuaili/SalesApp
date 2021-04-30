@@ -40,16 +40,22 @@ namespace csY2S2_cs_project.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
-            var managers = LogIn.Managerusers;
-            string maagerImage;
-            foreach (var item in managers)
+
+            var LogedInUser = LogIn.currenUser;
+            info.Text = LogedInUser.DisInformation();
+            try
             {
-                info.Text = item.DisInformation().ToString();
-                 maagerImage = item.image;
-              
+                UserImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/csY2S2-cs-project;component" + LogedInUser.image, UriKind.RelativeOrAbsolute));
+                
+      
+            }
+            catch (Exception)
+            {
+
+                UserImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/csY2S2-cs-project;component/images/users/default.jpg", UriKind.RelativeOrAbsolute));
             }
 
+           
 
         }
         
@@ -67,9 +73,12 @@ namespace csY2S2_cs_project.Views
             this.Close();
         }
 
-        private void SalesBtn_Clicked(object sender, RoutedEventArgs e)
+        
+
+        private void productsBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            DataContext = new ProductsUserControl();
         }
     }
 }

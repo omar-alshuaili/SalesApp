@@ -131,11 +131,26 @@
     <Compile Include="Data\users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104282103479_InitialCreate.cs" />
+    <Compile Include="Migrations\202104282103479_InitialCreate.Designer.cs">
+      <DependentUpon>202104282103479_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104291809250_Id.cs" />
+    <Compile Include="Migrations\202104291809250_Id.Designer.cs">
+      <DependentUpon>202104291809250_Id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Views\mangerScreenViews\newProduct\addNewProduct.xaml.cs">
+      <DependentUpon>addNewProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\mangerScreenViews\dashBoardUserControl1.xaml.cs">
       <DependentUpon>dashBoardUserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\mangerScreenViews\manageUserControl.xaml.cs">
       <DependentUpon>manageUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\mangerScreenViews\ProductsUserControl.xaml.cs">
+      <DependentUpon>ProductsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\screens\managerScreen.xaml.cs">
       <DependentUpon>managerScreen.xaml</DependentUpon>
@@ -152,6 +167,10 @@
     <Compile Include="Views\startWindows\startWindow3.xaml.cs">
       <DependentUpon>startWindow3.xaml</DependentUpon>
     </Compile>
+    <Page Include="styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -164,11 +183,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\mangerScreenViews\newProduct\addNewProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\mangerScreenViews\dashBoardUserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\mangerScreenViews\manageUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\mangerScreenViews\ProductsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +234,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202104282103479_InitialCreate.resx">
+      <DependentUpon>202104282103479_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104291809250_Id.resx">
+      <DependentUpon>202104291809250_Id.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -224,7 +257,6 @@
     <Resource Include="fonts\Rubik.ttf" />
     <None Include="json\test.json" />
     <None Include="packages.config" />
-    <None Include="Views\startWindows\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -233,7 +265,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="images\products\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\startWindow\IncreaseSales.jpg" />
     <Resource Include="images\startWindow\KnowTheMarket.png" />
@@ -266,6 +300,8 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Resource Include="images\users\default.jpg" />
+    <Resource Include="images\users\john.jpg" />
     <Resource Include="images\users\omar.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

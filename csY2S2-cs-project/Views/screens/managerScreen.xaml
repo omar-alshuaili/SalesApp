@@ -58,6 +58,7 @@
             <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
             <Setter Property="Foreground" Value="#2f77fe"/>
         </Style>
+        
 
     </Window.Resources>
     <Grid>
@@ -74,25 +75,14 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0"     CornerRadius="50" Margin="0 50 0 0" Width="100" Height="100" VerticalAlignment="Top"  RenderOptions.BitmapScalingMode="Fant">
             <Border.Background>
-                <ImageBrush Stretch="UniformToFill"  ImageSource="{Binding maagerImage}"/>
+                <ImageBrush Stretch="UniformToFill" x:Name="UserImage" />
             </Border.Background>
 
         </Border>
-        <Border Name="Mask" Background="White" CornerRadius="7"/>
-
-        <StackPanel Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <StackPanel.OpacityMask>
-                <VisualBrush Visual="{Binding ElementName=Mask}"/>
-            </StackPanel.OpacityMask>
-
-            <Image Name="imgPlayer"                           
-               Source="{Binding maagerImage}" 
-             
-               />
-        </StackPanel>
+        
 
 
-        <TextBlock  Text="Hello, Omar"   FontSize="16" Grid.Row="0" Grid.Column="0" x:Name="info"  FontWeight="SemiBold" TextAlignment="Center" Margin="0 0 0 30" VerticalAlignment="Bottom"  ></TextBlock>
+        <TextBlock     FontSize="16" Grid.Row="0" Grid.Column="0" x:Name="info"  FontWeight="SemiBold" TextAlignment="Center" Margin="0 0 0 20" VerticalAlignment="Bottom"  ></TextBlock>
 
         <DockPanel Grid.Column="0" Grid.Row="1" >
             <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch"  >
@@ -134,7 +124,7 @@
                     <Grid>
 
 
-                        <Button   Style="{StaticResource panelButton}" Click="SalesBtn_Clicked" VerticalAlignment="Stretch" >
+                        <Button x:Name="productsBtn"   Style="{StaticResource panelButton}" Click="productsBtn_Click" VerticalAlignment="Stretch" >
                             <Grid>
                                 <materialDesign:PackIcon Kind="LibraryShelves" Style="{StaticResource panelIcons}" ></materialDesign:PackIcon>
                                 <TextBlock Style="{StaticResource textPanel}"   Text="products"  ></TextBlock>

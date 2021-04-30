@@ -32,8 +32,7 @@ namespace csY2S2_cs_project.Views.mangerScreenViews
             InitializeComponent();
 
 
-            dateText.Text = DateTime.Now.ToShortDateString();
-            timeText.Text = DateTime.Now.ToString("hh:mm tt");
+
 
 
 

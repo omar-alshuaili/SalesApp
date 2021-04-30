@@ -75,7 +75,7 @@
         <TextBlock  x:Name="xx"/>
         <Button Click="Button_Click"  Content="Log in"  Height="50"  Width="134" Style="{StaticResource SubmitButton}" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="Fant"></Button>
 
-        <TextBlock  Grid.Row="3" x:Name="message" Width="330" Height="30" FontSize="20" TextAlignment="Center" VerticalAlignment="Top"  Foreground="Red"></TextBlock>
+        <TextBlock  Grid.Row="3" x:Name="message" Width="330" Height="30" FontSize="20" TextAlignment="Center" VerticalAlignment="Top" Opacity="0.6"  Foreground="Red"></TextBlock>
         
 
     </Grid>

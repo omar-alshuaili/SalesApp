@@ -44,7 +44,7 @@
         <DockPanel  Grid.ColumnSpan="3" Grid.Row="0">
             <StackPanel Orientation="Vertical">
                 <Image Height="300" Source="/images/startWindow/IncreaseSales.jpg"  RenderOptions.BitmapScalingMode="Fant" ></Image>
-
+                <TextBlock Text="Take the guesswork out of marketing with built-in tools that help you create, execute, and analyze digital marketing campaigns." Width="450" Opacity="0.5" Margin="0 0 0 20" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Foreground="Gray" FontSize="18"></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Border CornerRadius="5" Background="Transparent"  BorderThickness="1"  BorderBrush="Black" Height="10" Width="10" Margin="0,0,10,0"  Name="navCircle1">
                         <Canvas  Background="Transparent"   />

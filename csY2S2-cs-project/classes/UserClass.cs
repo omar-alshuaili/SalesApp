@@ -12,7 +12,8 @@ namespace csY2S2_cs_project.classes
         public string Name { set; get; }
         public string image { set; get; }
         public string RoleName { get; set; }
-       
+        public abstract string DisInformation();
+
 
     }
 }

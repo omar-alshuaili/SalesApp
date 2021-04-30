@@ -34,11 +34,12 @@
             <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal"  Margin="10">
 
 
-
+                <TextBlock Text="Next"  VerticalAlignment="Center" FontSize="17" Margin="5,0,0,0" Style="{DynamicResource NavText}"></TextBlock>
                 <Button   Background="Transparent" BorderBrush="Transparent" Style="{StaticResource NavButton}" Click="Next_button_clicked" >
 
                     <materialDesign:PackIcon Kind="ArrowRight" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="BlueViolet" Height="100" Width="50"></materialDesign:PackIcon>
                 </Button>
+                
             </StackPanel>
         </DockPanel>
 
@@ -49,6 +50,8 @@
         <DockPanel  Grid.ColumnSpan="3" Grid.Row="0">
             <StackPanel Orientation="Vertical">
                 <Image Height="300" Source="/images/startWindow/KnowTheMarket.png"  RenderOptions.BitmapScalingMode="Fant" ></Image>
+                <TextBlock Text="Use one platform to sell products to anyone, anywhere—in person with Point of Sale " Width="450" Opacity="0.5" Margin="0 0 0 20" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Foreground="Gray" FontSize="18"></TextBlock>
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Border CornerRadius="5" Background="Transparent"  BorderThickness="1"  BorderBrush="Black" Height="10" Width="10" Margin="0,0,10,0"  Name="navCircle1">
                         <Canvas  Background="Transparent"   />

@@ -7,7 +7,7 @@
                           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
              mc:Ignorable="d" 
-            d:DesignWidth="770"  Height="710" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#f6f9fd" Loaded="UserControl_Loaded" >
+            d:DesignWidth="770"  Height="630" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0" Background="#f6f9fd" Loaded="UserControl_Loaded" >
     <UserControl.Resources>
         <Style x:Key="StackOfBtns" TargetType="{x:Type StackPanel}">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -56,15 +56,15 @@
             </ScrollViewer>
         </Border>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center"  VerticalAlignment="Center" >
-            <StackPanel Orientation="Vertical" >
+        <StackPanel Focusable="False" Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center"  VerticalAlignment="Center" >
+            <StackPanel Focusable="False" Orientation="Vertical" >
 
 
-                <TextBlock Text="name" VerticalAlignment="Center" Margin="5 0 0 10" FontSize="16" FontWeight="Light" Foreground="Gray"/>
+                <TextBlock Focusable="False" Text="name" VerticalAlignment="Center" Margin="5 0 0 10" FontSize="16" FontWeight="Light" Foreground="Gray"/>
 
                 <Border Style="{StaticResource borderInputs}" PreviewMouseDown="nameInput_PreviewMouseDown"  >
 
-                    <TextBox Style="{StaticResource inputs}" x:Name="nameInput"    />
+                    <TextBox  Style="{StaticResource inputs}" x:Name="nameInput"    />
                 </Border>
 
 
@@ -86,25 +86,25 @@
             <StackPanel Orientation="Vertical" Margin="0 20 0 0 ">
 
 
-                <TextBlock  Text="role" VerticalAlignment="Center" Margin="5 0 0 10" FontSize="16" FontWeight="Light" Foreground="Gray" />
+                <TextBlock   Text="role" VerticalAlignment="Center" Margin="5 0 0 10" FontSize="16" FontWeight="Light" Foreground="Gray" />
 
 
                 <Border Style="{StaticResource borderInputs}" PreviewMouseDown="roleNameInput_PreviewMouseDown" >
 
-                    <TextBox Style="{StaticResource inputs}" x:Name="roleNameInput"   />
+                    <TextBox  Style="{StaticResource inputs}" x:Name="roleNameInput"   />
                 </Border>
 
 
             </StackPanel>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            
+        <StackPanel Focusable="False" Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-        <TextBlock x:Name="waringMessage" Text="To edit the filed, please click the edit button " FontSize="16" Margin="0 400 0 0" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Red" Opacity="0.5" Visibility="Hidden"></TextBlock>
-        <Button   x:Name="hide"  Style="{StaticResource exitButton}"   Grid.Row="0" Grid.Column="1" Margin="15 400 0 0" MinWidth="0" Width="20" Height="20" Visibility="Hidden" Click="hide_Click">
-           
-            <materialDesign:PackIcon Kind="Close" Foreground="Red" Opacity=".6" />
+
+            <TextBlock Focusable="False" x:Name="waringMessage" Text="To edit the filed, please click the edit button " FontSize="16" Margin="0 400 0 0" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Red" Opacity="0.5" Visibility="Hidden"></TextBlock>
+            <Button Focusable="False"   x:Name="hide"  Style="{StaticResource exitButton}"   Grid.Row="0" Grid.Column="1" Margin="15 400 0 0" MinWidth="0" Width="20" Height="20" Visibility="Hidden" Click="hide_Click">
+
+                <materialDesign:PackIcon Focusable="False" Kind="Close" Foreground="Red" Opacity=".6" />
         </Button>
 
         </StackPanel>
@@ -114,7 +114,7 @@
                         <Grid>
 
 
-                            <Button  x:Name="deleteBtn"  Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="delete" Click="deleteBtn_Click" >
+                    <Button Focusable="False"  x:Name="deleteBtn"  Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="delete" Click="deleteBtn_Click" >
                             </Button>
 
                         </Grid>
@@ -124,7 +124,7 @@
                         <Grid>
 
 
-                            <Button  x:Name="editBtn"  Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="edit" HorizontalAlignment="Left" Width="100" Click="editBtn_Click" >
+                    <Button Focusable="False"  x:Name="editBtn"  Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="edit" HorizontalAlignment="Left" Width="100" Click="editBtn_Click" >
                             </Button>
 
                         </Grid>
@@ -134,7 +134,7 @@
                         <Grid>
 
 
-                            <Button  x:Name="saveBtn"  Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="save" Click="saveBtn_Click" >
+                            <Button Focusable="False"  x:Name="saveBtn"  Style="{StaticResource panelButton}"  VerticalAlignment="Center"  Content="save" Click="saveBtn_Click" >
                             </Button>
 
                         </Grid>
